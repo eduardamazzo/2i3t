@@ -1,6 +1,6 @@
-let a = "";
-let b = "";
-let c = "";
+let a = "0";
+let b = "0";
+let c = "0";
 let sa = "+"
 let sb = "+"
 let sc = "+"
@@ -13,6 +13,7 @@ sub = (a,b) => Number(a) - Number(b);
 mult = (a,b) => Number(a) * Number(b);
 div = (a,b) => Number(a) / Number(b);
 raiz = a => Math.sqrt(a);
+
 equacao2Grau = (a,b,c) =>{
     let delta = sub(mult(b,b),mult(4,mult(a,c)));
     document.getElementById("delta").innerHTML = delta;
@@ -105,11 +106,16 @@ function digitando(tecla){
 }
 const calcular_equacao = ()=>{
     if(a != "" && a != "0"){
-        if(a != "+"){ a = -(Number(a));} else {a=number(a)};
-        if(b != "+") {b = -(Number(b));} else {b=number(b)};
-        if(c != "+") {c = -(Number(c));} else {c=number(c)};
+        a = Number(a);
+        b = Number(b);
+        c = Number(c);
+        if(sa != "+") a = -a;
+        if(sa != "+") b = -b;
+        if(sa != "+") c = -c;
+        alert(sa + a + " x2 " + sb + b "x" + sc + c )
+        
                 
-        document.getElementById("raiz").innerHTML = equacao2Grau(a,b,c)
+        document.getElementById("raiz").innerHTML = equacao2Grau()
     }
    
 }
