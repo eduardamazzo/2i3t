@@ -18,11 +18,11 @@ raiz = a => Math.sqrt(a);
 equacao2Grau = (a, b, c) => {
     let delta = sub(mult(b, b), mult(4, mult(a, c)));
     document.getElementById("delta").innerHTML = delta;
-    
+
     if (delta < 0) return "Não possui raiz real.";
     if (delta == 0) return "x<sub>1</sub> = x<sub>2</sub> = " + div(-b, mult(2, a));
-    return  "x<sub>1</sub> = " + div(soma(-b, raiz(delta)), mult(2, a)) +
-    "  x<sub>2</sub> = " + div(sub(-b, raiz(delta)), mult(2, a));
+    return "x<sub>1</sub> = " + div(soma(-b, raiz(delta)), mult(2, a)) +
+        "  x<sub>2</sub> = " + div(sub(-b, raiz(delta)), mult(2, a));
 }
 
 function mostrar_resultado() {
@@ -114,10 +114,10 @@ function digitando(tecla) {
 
 const calcular_equacao = () => {
     if (a != "" && a != "0") {
-        if(a != "+") {a = -(Number(a))} else {a = Number(a)};
-        if(b != "+") {b = -(Number(b))} else {b = Number(b)};;
-        if(c != "+") {c = -(Number(c))} else {c = Number(c)};;
-        document.getElementById("raiz").innerHTML = equacao2Grau(a,b,c);
+        if (a != "+") { a = -(Number(a)) } else { a = Number(a) };
+        if (b != "+") { b = -(Number(b)) } else { b = Number(b) };;
+        if (c != "+") { c = -(Number(c)) } else { c = Number(c) };;
+        document.getElementById("raiz").innerHTML = equacao2Grau(a, b, c);
     }
 }
 
@@ -147,3 +147,42 @@ const set_valor_c = () => {
     calcular_equacao();
 }
 
+
+
+let pa_a1 = "";
+let pa_r = "";
+let pa_n = "";
+const setpa_a1 = () => {
+    pa_a1 = Number(document.getElementById("pa_a1").value);
+    mostrarpa_seq();
+}
+const setpa_n = () => {
+    pa_n = Number(document.getElementById("pa_n").value);
+    mostrarpa_seq();
+}
+const setpa_r = () => {
+    pa_r = Number(document.getElementById("pa_r").value);
+    mostrarpa_seq();
+}
+const mostrarpa_seq = () => {
+    let pa = pa_a1;
+    let ntermos = 1;
+    if (pa_r != "" && pa_n != "" && pa_a1 != "") {
+        for (let i = 1; i < pa_n; i++) {
+            if (ntermos < 4) {
+                pa += ", " + (Number(pa_a1) + (i * pa_r));
+                ntermos++;
+            }
+        }
+    }
+    if (pa_n > 3) {
+        pa += ", ... ," + (Number(pa_a1) + (pa_n - 1) * pa_r);
+    }
+document.getElementById("pa_seq").innerHTML = pa;
+}
+
+
+
+let pg_a1 = "";
+let pg_r = "";
+let pg_n = "";
